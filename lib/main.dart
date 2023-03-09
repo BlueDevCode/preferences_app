@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:preferences_app/share_preferences/preferences.dart';
 import 'screens/screens.dart';
 
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+await Preferences.init;
+runApp( const MyApp());
+}
+ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
@@ -18,8 +23,8 @@ class MyApp extends StatelessWidget {
        SettingsScreen.router: (_) => const SettingsScreen()
 
 
-      }
-      ,
+      },
+      theme: ThemeData.light(),
     );
   }
-}
+ }
